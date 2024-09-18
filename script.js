@@ -25,7 +25,7 @@ function drawLine(x1, y1, x2, y2) {
   ctx.moveTo(x1, y1);
   ctx.lineTo(x2, y2);
   ctx.strokeStyle = cur_color;
-  ctx.lineWidth = size;
+  ctx.lineWidth = size * 2;
   ctx.stroke();
 }
 
@@ -35,8 +35,8 @@ function updateSize() {
 
 canvas.onmousedown = (e) => {
   isClicked = true;
-  x = e.offsetX - containerX;
-  y = e.offsetY - containerY;
+  x = e.clientX - containerX;
+  y = e.clientY - containerY;
 };
 
 document.onmouseup = (e) => {
@@ -47,8 +47,8 @@ document.onmouseup = (e) => {
 
 canvas.onmousemove = (e) => {
   if (isClicked) {
-    const x2 = e.offsetX - containerX;
-    const y2 = e.offsetY - containerY;
+    const x2 = e.clientX - containerX;
+    const y2 = e.clientY - containerY;
 
     drawCircle(x2, y2);
     drawLine(x, y, x2, y2);
